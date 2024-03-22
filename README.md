@@ -30,9 +30,6 @@ Open source [mtproto](https://core.telegram.org/mtproto) server implementation w
 
 Privatization deployment Before `Teamgram`, please make sure that the above five components have been installed. If your server does not have the above components, you must first install Missing components. 
 
-- [Centos9 Stream Build and Install](docs/install-centos-9.md) [@A Feel]
-- [CentOS7 teamgram-server环境搭建](docs/install-centos-7.md) [@saeipi]
-
 If you have the above components, it is recommended to use them directly. If not, it is recommended to use `docker-compose-env.yaml`.
 
 
@@ -103,7 +100,6 @@ docker-compose up -d
 ```
 	
 ## Compatible clients
-**Important**: default signIn verify code is **12345**
 
 [Android client for Teamgram](clients/teamgram-android.md)
 
@@ -111,18 +107,7 @@ docker-compose up -d
 
 [tdesktop for Teamgram](clients/teamgram-tdesktop.md)
 
-## Feedback
-Please report bugs, concerns, suggestions by issues, or join telegram group **[Teamgram](https://t.me/+TjD5LZJ5XLRlCYLF)** to discuss problems around source code.
 
-## Notes
-If need enterprise edition:
-
-- sticker/theme/wallpaper/reactions/2fa/sms/push(apns/web/fcm)/web...
-- channel/megagroup
-- audiocall/videocall/groupcall
-- bots
-
-please PM the **[author](https://t.me/benqi)**
 
 ## Give a Star! ⭐
 
