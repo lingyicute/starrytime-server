@@ -2,7 +2,7 @@
  * WARNING! All changes made in this file will be lost!
  * Created from 'scheme.tl' by 'mtprotoc'
  *
- * Copyright 2022 Teamgram Authors.
+ * Copyright 2024 Teamgram Authors.
  *  All rights reserved.
  *
  * Author: teamgramio (teamgram.io@gmail.com)
@@ -59,5 +59,35 @@ func (s *Service) ChannelsClickSponsoredMessage(ctx context.Context, request *mt
 	}
 
 	c.Logger.Debugf("channels.clickSponsoredMessage - reply: %s", r.DebugString())
+	return r, err
+}
+
+// ChannelsReportSponsoredMessage
+// channels.reportSponsoredMessage#af8ff6b9 channel:InputChannel random_id:bytes option:bytes = channels.SponsoredMessageReportResult;
+func (s *Service) ChannelsReportSponsoredMessage(ctx context.Context, request *mtproto.TLChannelsReportSponsoredMessage) (*mtproto.Channels_SponsoredMessageReportResult, error) {
+	c := core.New(ctx, s.svcCtx)
+	c.Logger.Debugf("channels.reportSponsoredMessage - metadata: %s, request: %s", c.MD.DebugString(), request.DebugString())
+
+	r, err := c.ChannelsReportSponsoredMessage(request)
+	if err != nil {
+		return nil, err
+	}
+
+	c.Logger.Debugf("channels.reportSponsoredMessage - reply: %s", r.DebugString())
+	return r, err
+}
+
+// ChannelsRestrictSponsoredMessages
+// channels.restrictSponsoredMessages#9ae91519 channel:InputChannel restricted:Bool = Updates;
+func (s *Service) ChannelsRestrictSponsoredMessages(ctx context.Context, request *mtproto.TLChannelsRestrictSponsoredMessages) (*mtproto.Updates, error) {
+	c := core.New(ctx, s.svcCtx)
+	c.Logger.Debugf("channels.restrictSponsoredMessages - metadata: %s, request: %s", c.MD.DebugString(), request.DebugString())
+
+	r, err := c.ChannelsRestrictSponsoredMessages(request)
+	if err != nil {
+		return nil, err
+	}
+
+	c.Logger.Debugf("channels.restrictSponsoredMessages - reply: %s", r.DebugString())
 	return r, err
 }

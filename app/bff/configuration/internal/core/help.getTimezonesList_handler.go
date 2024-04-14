@@ -16,11 +16,17 @@
 // Author: teamgramio (teamgram.io@gmail.com)
 //
 
-package dao
+package core
 
-type Dao struct {
-}
+import (
+	"github.com/teamgram/proto/mtproto"
+)
 
-func New() *Dao {
-	return new(Dao)
+// HelpGetTimezonesList
+// help.getTimezonesList#49b30240 hash:int = help.TimezonesList;
+func (c *ConfigurationCore) HelpGetTimezonesList(in *mtproto.TLHelpGetTimezonesList) (*mtproto.Help_TimezonesList, error) {
+	// TODO: not impl
+	c.Logger.Errorf("help.getTimezonesList blocked, License key from https://teamgram.net required to unlock enterprise features.")
+
+	return nil, mtproto.ErrEnterpriseIsBlocked
 }

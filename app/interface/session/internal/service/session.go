@@ -268,7 +268,7 @@ func (c *session) onSessionMessageData(ctx context.Context, gatewayId, clientIp 
 	// tdesktop: code = 16, 17, 64会重发，我们不要检查container里的msgId和seqNo
 	//
 	if !c.checkBadMsgNotification(ctx, gatewayId, false, msg) {
-		// log.Errorf("badMsgNotification - {sess: %s, conn_id: %s}", c, gatewayId)
+		logx.Errorf("badMsgNotification - {sess: %s, conn_id: %s}", c, gatewayId)
 		return
 	}
 
@@ -422,6 +422,8 @@ func (c *session) processMsg(ctx context.Context, gatewayId, clientIp string, in
 		c.onInvokeWithMessagesRange(ctx, gatewayId, clientIp, inMsg, r.(*mtproto.TLInvokeWithMessagesRange))
 	case *mtproto.TLInvokeWithTakeout:
 		c.onInvokeWithTakeout(ctx, gatewayId, clientIp, inMsg, r.(*mtproto.TLInvokeWithTakeout))
+	case *mtproto.TLInvokeWithBusinessConnection:
+		c.onInvokeWithBusinessConnection(ctx, gatewayId, clientIp, inMsg, r.(*mtproto.TLInvokeWithBusinessConnection))
 	case *mtproto.TLInitConnection:
 		c.onInitConnection(ctx, gatewayId, clientIp, inMsg, r.(*mtproto.TLInitConnection))
 	case *mtproto.TLGzipPacked:

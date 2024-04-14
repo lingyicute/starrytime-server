@@ -16,11 +16,22 @@
 // Author: teamgramio (teamgram.io@gmail.com)
 //
 
-package dao
+package core
 
-type Dao struct {
-}
+import (
+	"github.com/teamgram/proto/mtproto"
+)
 
-func New() *Dao {
-	return new(Dao)
+// MessagesCreateChat92CEDDD4
+// messages.createChat#92ceddd4 flags:# users:Vector<InputUser> title:string ttl_period:flags.0?int = messages.InvitedUsers;
+func (c *ChatsCore) MessagesCreateChat92CEDDD4(in *mtproto.TLMessagesCreateChat92CEDDD4) (*mtproto.Messages_InvitedUsers, error) {
+	rV, err := c.createChat(in.Users, in.Title, in.GetTtlPeriod().GetValue())
+	if err != nil {
+		return nil, err
+	}
+
+	return mtproto.MakeTLMessagesInvitedUsers(&mtproto.Messages_InvitedUsers{
+		Updates:         rV,
+		MissingInvitees: []*mtproto.MissingInvitee{},
+	}).To_Messages_InvitedUsers(), nil
 }
